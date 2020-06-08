@@ -1,0 +1,13 @@
+{
+    "cmake.configureOnOpen": true,
+    "files.associations": {
+        ".h": "c",
+        "system_error": "cpp"
+    },
+    "editor.renderWhitespace": "all",
+    "cmake.preferredGenerators":[
+        "Ninja",
+        "Unix Makefiles"
+    ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+}

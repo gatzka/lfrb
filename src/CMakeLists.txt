@@ -1,0 +1,93 @@
+cmake_minimum_required(VERSION 3.9)
+
+project(lfrb VERSION 0.0.1 LANGUAGES C)
+
+add_library(${PROJECT_NAME}
+    lfrb.c
+    lfrb.h
+)
+
+add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+
+target_include_directories(${PROJECT_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/generated/>
+)
+
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
+    SOVERSION ${PROJECT_VERSION_MAJOR}
+    C_STANDARD 11
+    C_STANDARD_REQUIRED ON
+    C_EXTENSIONS OFF
+    C_VISIBILITY_PRESET hidden
+)
+
+set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY PUBLIC_HEADER
+    lfrb.h
+)
+
+include(GenerateExportHeader)
+generate_export_header(${PROJECT_NAME} EXPORT_FILE_NAME ${CMAKE_CURRENT_BINARY_DIR}/generated/${PROJECT_NAME}_export.h)
+
+include(GNUInstallDirs)
+install(TARGETS ${PROJECT_NAME}
+    EXPORT ${PROJECT_NAME}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file("${PROJECT_NAME}ConfigVersion.cmake"
+    VERSION ${${PROJECT_NAME}_VERSION}
+    COMPATIBILITY SameMajorVersion
+)
+
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+    DESTINATION lib/cmake/${PROJECT_NAME}
+)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/generated/${PROJECT_NAME}_export.h"
+    DESTINATION include/lfrb/
+)
+
+install(EXPORT ${PROJECT_NAME}
+    NAMESPACE ${PROJECT_NAME}::
+    DESTINATION lib/cmake/${PROJECT_NAME}
+    FILE ${PROJECT_NAME}Config.cmake
+)
+
+include(FindDoxygen)
+
+if(DOXYGEN_FOUND)
+    set(DOXYGEN_EXTRACT_ALL YES)
+    set(DOXYGEN_EXTRACT_STATIC YES)
+    set(DOXYGEN_GENERATE_HTML YES)
+    set(DOXYGEN_GENERATE_TREEVIEW YES)
+	set(DOXYGEN_HAVE_DOT NO)
+    set(DOXYGEN_OPTIMIZE_OUTPUT_FOR_C YES)
+    set(DOXYGEN_OUTPUT_DIRECTORY docs/)
+    set(DOXYGEN_PROJECT_BRIEF "An ANSI C lockfree ringbuffer implementation.")
+	set(DOXYGEN_PROJECT_NUMBER ${${PROJECT_NAME}_VERSION})
+    set(DOXYGEN_QUIET YES)
+    set(DOXYGEN_RECURSIVE NO)
+    set(DOXYGEN_STRICT_PROTO_MATCHING YES)
+    set(DOXYGEN_STRIP_FROM_PATH ${CMAKE_CURRENT_BINARY_DIR}/generated/ ${CMAKE_CURRENT_SOURCE_DIR})
+    set(DOXYGEN_WARN_AS_ERROR YES)
+    set(DOXYGEN_PROJECT_NAME ${CMAKE_PROJECT_NAME})
+    set(DOXYGEN_EXCLUDE_PATTERNS "lfrb_export.h")
+    set(DOXYGEN_ENABLE_PREPROCESSING YES)
+    set(DOXYGEN_MACRO_EXPANSION YES)
+    set(DOXYGEN_EXPAND_ONLY_PREDEF YES)
+    set(DOXYGEN_PREDEFINED CIO_EXPORT)
+
+    doxygen_add_docs(${PROJECT_NAME}_docs
+        ${PROJECT_SOURCE_DIR}
+        ${CMAKE_CURRENT_BINARY_DIR}/generated/
+        COMMENT "Generating API documentation with Doxygen"
+    )
+else(DOXYGEN_FOUND)
+    message(STATUS "Doxygen need to be installed to generate the doxygen documentation")
+endif(DOXYGEN_FOUND)
+
