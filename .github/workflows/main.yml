@@ -1,0 +1,291 @@
+name: CI build
+
+on: [push, pull_request]
+
+jobs:
+  windows-debug:
+    name: x86 windows Debug
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      run: ctest -VV -DCTEST_CMAKE_GENERATOR="Visual Studio 16 2019" -DCTEST_TOOLCHAIN_FILE="/tmp/lfrb/toolchains/x86_windows_msvc.cmake" -DCTEST_CONFIGURATION_TYPE:STRING=Debug -S build.cmake
+
+  gcc-10-debug:
+    name: x86 gcc-10 Debug
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-gcc-10.cmake
+        ctest_configuration_type: Debug
+
+  gcc-10-release:
+    name: x86 gcc-10 Release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-gcc-10.cmake
+        ctest_configuration_type: Release
+
+  gcc-10-valgrind:
+    name: x86 gcc-10 Valgrind
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-gcc-10.cmake
+        ctest_configuration_type: Valgrind
+
+  clang-10-debug:
+    name: x86 clang-10 Debug
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-clang-10.cmake
+        ctest_configuration_type: Debug
+
+  clang-10-release:
+    name: x86 clang-10 Release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-clang-10.cmake
+        ctest_configuration_type: Release
+
+  clang-10-UndefinedBehaviorSanitizer:
+    name: x86 clang-10 UndefinedBehaviorSanitizer
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-clang-10.cmake
+        ctest_configuration_type: UndefinedBehaviorSanitizer
+
+  clang-10-LeakSanitizer:
+    name: x86 clang-10 LeakSanitizer
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-clang-10.cmake
+        ctest_configuration_type: LeakSanitizer
+
+  clang-10-MemorySanitizer:
+    name: x86 clang-10 MemorySanitizer
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-clang-10.cmake
+        ctest_configuration_type: MemorySanitizer
+
+  clang-10-AddressSanitizer:
+    name: x86 clang-10 AddressSanitizer
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-clang-10.cmake
+        ctest_configuration_type: AddressSanitizer
+
+  clang-10-scanbuild:
+    name: x86 clang-10 scan-build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-clang-10.cmake
+        ctest_analyzer: scan-build-10
+
+  clang-10-clangtidy:
+    name: x86 clang-10 clang-tidy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/x86-linux-clang-10.cmake
+        ctest_analyzer: clang-tidy-10
+        ctest_configuration_type: Release
+
+  gcc-9-arm:
+    name: arm gcc-9 Release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/arm-linux-gnueabihf-gcc-9.cmake
+        ctest_configuration_type: Release
+
+  gcc-9-aarch64:
+    name: aarch64 gcc-9 Release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/aarch64-linux-gnu-gcc-9.cmake
+        ctest_configuration_type: Release
+
+  gcc-9-riscv64:
+    name: riscv64 gcc-9 Release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: /tmp/lfrb/toolchains/riscv64-linux-gcc-9.cmake
+        ctest_configuration_type: Release
+
+  gcc-10-coverage:
+    name: x86 code coverage
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: ctest build
+      uses: gatzka/ctest-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        ctest_toolchain_file: build/toolchains/x86-linux-gcc-10.cmake
+        ctest_configuration_type: Coverage
+        ctest_binary_directory: build
+    - name: coverage upload
+      uses: gatzka/codecov-action@v1.4.0
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        path: build
+        flags: unittests
+
+  sonarcloud:
+    name: sonarcloud scan build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: sonarcloud cmake build
+      uses: gatzka/sonarcloud-cmake-build-action@v1.4.1
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        cmake_build_type: Debug
+
+  doxygen:
+    name: generate doxygen documentation
+    runs-on: ubuntu-latest
+    needs: [gcc-10-debug, gcc-10-release, gcc-10-valgrind, clang-10-debug, clang-10-release, clang-10-UndefinedBehaviorSanitizer, clang-10-LeakSanitizer, clang-10-MemorySanitizer, clang-10-AddressSanitizer, clang-10-scanbuild, clang-10-clangtidy]
+    if: contains(github.ref, 'master')
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: cmake build
+      uses: gatzka/cmake-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        cmake_build_target: lfrb_docs
+    - name: GitHub Pages Deploy
+      uses: gatzka/publish-gh-pages-action@v1.0.0
+      env:
+        BUILD_DIR: build/src/docs/
+        GH_PAT: ${{ secrets.GH_PAT }}
+        GH_PAGES_SUBDIR: ./doc
+
+  coverity:
+    name: coverity scan build
+    runs-on: ubuntu-latest
+    if: contains(github.ref, 'coverity_scan')
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: coverity cmake build
+      uses: gatzka/coverity-cmake-build-action@v1.4.0
+      with:
+        install_deps: ./.github/workflows/install-deps.sh
+        cmake_build_type: Debug
+        coverity_token: ${{ secrets.COVERITY_TOKEN }}
+        coverity_account: gatzka
+        coverity_project: lfrb
+        coverity_email: stephan.gatzka@gmail.com
+        coverity_version: ${{ github.sha }}
+        coverity_description: "Build submitted by github action"
+
