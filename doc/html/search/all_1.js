@@ -15,8 +15,7 @@ var searchData=
   ['lfrb_5finvalid_5fargument_14',['LFRB_INVALID_ARGUMENT',['../lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea608e5a07d37c349bee2193e6584da0b4',1,'lfrb.h']]],
   ['lfrb_5fis_5fempty_15',['lfrb_is_empty',['../lfrb_8c.html#aa0dd06a847bba1dd16b8e95f27c100f8',1,'lfrb_is_empty(const struct lfrb *lfrb):&#160;lfrb.c'],['../lfrb_8h.html#a361c5e3efcf835cb6b0d18de5649a6ba',1,'lfrb_is_empty(const struct lfrb *lfrb):&#160;lfrb.c']]],
   ['lfrb_5fis_5ffull_16',['lfrb_is_full',['../lfrb_8c.html#a941613e633cdebab0069065449dfde34',1,'lfrb_is_full(const struct lfrb *lfrb):&#160;lfrb.c'],['../lfrb_8h.html#a7fd8669bd41fd81a28b6ba9cb73bc74d',1,'lfrb_is_full(const struct lfrb *lfrb):&#160;lfrb.c']]],
-  ['lfrb_5fnodata_17',['LFRB_NODATA',['../lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea8340fe9d92ae78e7938f4195f5461b25',1,'lfrb.h']]],
-  ['lfrb_5fnot_5fpower_5fof_5f2_18',['LFRB_NOT_POWER_OF_2',['../lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148eabebf71af493fc707ec546f835b10e6da',1,'lfrb.h']]],
-  ['lfrb_5fsize_19',['lfrb_size',['../lfrb_8c.html#a1703f4ea509c3c741cc1d10dc5e492e4',1,'lfrb_size(const struct lfrb *lfrb):&#160;lfrb.c'],['../lfrb_8h.html#af9e3e0f930a9aa941140b0332fb646ca',1,'lfrb_size(const struct lfrb *lfrb):&#160;lfrb.c']]],
-  ['lfrb_5fsuccess_20',['LFRB_SUCCESS',['../lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea633cf795fd4655dbf454d192d4d3b07e',1,'lfrb.h']]]
+  ['lfrb_5fnot_5fpower_5fof_5f2_17',['LFRB_NOT_POWER_OF_2',['../lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148eabebf71af493fc707ec546f835b10e6da',1,'lfrb.h']]],
+  ['lfrb_5fsize_18',['lfrb_size',['../lfrb_8c.html#a1703f4ea509c3c741cc1d10dc5e492e4',1,'lfrb_size(const struct lfrb *lfrb):&#160;lfrb.c'],['../lfrb_8h.html#af9e3e0f930a9aa941140b0332fb646ca',1,'lfrb_size(const struct lfrb *lfrb):&#160;lfrb.c']]],
+  ['lfrb_5fsuccess_19',['LFRB_SUCCESS',['../lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea633cf795fd4655dbf454d192d4d3b07e',1,'lfrb.h']]]
 ];

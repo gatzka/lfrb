@@ -4,7 +4,6 @@ var lfrb_8h =
     [ "lfrb_error", "lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148e", [
       [ "LFRB_SUCCESS", "lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea633cf795fd4655dbf454d192d4d3b07e", null ],
       [ "LFRB_NOT_POWER_OF_2", "lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148eabebf71af493fc707ec546f835b10e6da", null ],
-      [ "LFRB_NODATA", "lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea8340fe9d92ae78e7938f4195f5461b25", null ],
       [ "LFRB_INVALID_ARGUMENT", "lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea608e5a07d37c349bee2193e6584da0b4", null ]
     ] ],
     [ "lfrb_dequeue", "lfrb_8h.html#a949e6f63bb4512610ac1e74cedd8c61a", null ],
