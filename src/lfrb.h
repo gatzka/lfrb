@@ -43,8 +43,7 @@ extern "C" {
 enum lfrb_error {
 	LFRB_SUCCESS = 0,           /*!< No error occured. */
 	LFRB_NOT_POWER_OF_2 = -1,   /*!< The ringbuffer size is not power of 2. */
-	LFRB_NODATA = -2,           /*!< No data in ringbuffer to dequeue data. */
-	LFRB_INVALID_ARGUMENT = -3, /*!< An argument is not correct. */
+	LFRB_INVALID_ARGUMENT = -2, /*!< An argument is not correct. */
 };
 
 struct lfrb {
