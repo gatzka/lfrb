@@ -30,8 +30,13 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <string.h>
 
 #include "lfrb.h"
+
+#ifndef MIN
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#endif
 
 //static memory_order index_acquire_barrier = memory_order_acquire;
 //static memory_order index_release_barrier = memory_order_release;
@@ -82,10 +87,13 @@ size_t lfrb_enqueue_buffer(struct lfrb *lfrb, uint8_t *buff, size_t count)
 		to_write = available;
 	}
 
-	// maybe divide it into 2 separate writes
-	for (size_t i = 0; i < to_write; i++) {
-		lfrb->mem[tmp_write_index++ & lfrb->mask] = buff[i];
-	}
+	size_t first_chunk = MIN(lfrb_size(lfrb) - (tmp_write_index & lfrb->mask), to_write);
+	memcpy(&lfrb->mem[tmp_write_index  & lfrb->mask], buff, first_chunk);
+	tmp_write_index += first_chunk;
+
+	size_t second_chunk = to_write - first_chunk;
+	memcpy(&lfrb->mem[tmp_write_index  & lfrb->mask], &buff[first_chunk], second_chunk);
+	tmp_write_index += second_chunk;
 
 	atomic_signal_fence(memory_order_release);
 	atomic_store_explicit(&lfrb->write_index, tmp_write_index, index_release_barrier);

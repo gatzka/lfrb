@@ -181,6 +181,31 @@ static void test_enqueue_big_block(void)
 	}
 }
 
+static void test_enqueue_big_block_with_wrap_around(void)
+{
+	uint8_t val;
+
+	struct lfrb lfrb;
+	uint8_t buffer[4];
+	enum lfrb_error err = lfrb_init(&lfrb, sizeof(buffer), buffer);
+	TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Initialization of rightly sized buffer failed!");
+
+	for (unsigned int i = 0; i < 20; i++) {
+		lfrb_enqueue(&lfrb, 'a');
+		lfrb_dequeue(&lfrb, &val);
+
+		uint8_t block[] = {1, 2, 3, 4, 5};
+		size_t written = lfrb_enqueue_buffer(&lfrb, block, sizeof(block));
+		TEST_ASSERT_EQUAL_MESSAGE(lfrb_size(&lfrb), written, "Not enough or too much data written into empty ringbuffer!");
+
+		for (unsigned int j = 0; j < written; j++) {
+			err = lfrb_dequeue(&lfrb, &val);
+			TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Dequeueing failed!");
+			TEST_ASSERT_EQUAL_MESSAGE(block[j], val, "dequeuing values from block enqueue do not match!");
+		}
+	}
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -191,5 +216,6 @@ int main(void)
 	RUN_TEST(test_enqueuer_clear);
 	RUN_TEST(test_enqueue_block);
 	RUN_TEST(test_enqueue_big_block);
+	RUN_TEST(test_enqueue_big_block_with_wrap_around);
 	return UNITY_END();
 }
