@@ -1,10 +1,10 @@
 var lfrb_8c =
 [
     [ "MIN", "lfrb_8c.html#a3acffbd305ee72dcd4593c0d8af64a4f", null ],
-    [ "lfrb_dequeue", "lfrb_8c.html#a17cb47a443dca7ca2c382c4c5c263854", null ],
+    [ "lfrb_dequeue", "lfrb_8c.html#a949e6f63bb4512610ac1e74cedd8c61a", null ],
     [ "lfrb_dequeue_available", "lfrb_8c.html#ab65268272ec46e1d83f65932a5c2144d", null ],
     [ "lfrb_dequeuer_clear", "lfrb_8c.html#a767f22407e2c34b1403be82523929afb", null ],
-    [ "lfrb_enqueue", "lfrb_8c.html#a50d5e25f406205366501351ea490fbce", null ],
+    [ "lfrb_enqueue", "lfrb_8c.html#a50c1f9d5361a506dbe1b291a3b7310a0", null ],
     [ "lfrb_enqueue_available", "lfrb_8c.html#ae9a2442d73a41303bd4b079bac489171", null ],
     [ "lfrb_enqueue_buffer", "lfrb_8c.html#adb2e79b9cd6adb90f3721a4f72b3a929", null ],
     [ "lfrb_enqueuer_clear", "lfrb_8c.html#a805f4d54c7eb984e11d66250fb15c604", null ],

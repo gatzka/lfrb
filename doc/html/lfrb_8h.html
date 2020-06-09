@@ -106,14 +106,10 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:acd1fe3b16fcc7d17d6e1ecb9ca49148e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148e">lfrb_error</a> { <br />
-&#160;&#160;<a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea633cf795fd4655dbf454d192d4d3b07e">LFRB_SUCCESS</a> = 0, 
+<tr class="memitem:acd1fe3b16fcc7d17d6e1ecb9ca49148e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148e">lfrb_error</a> { <a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea633cf795fd4655dbf454d192d4d3b07e">LFRB_SUCCESS</a> = 0, 
 <a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148eabebf71af493fc707ec546f835b10e6da">LFRB_NOT_POWER_OF_2</a> = -1, 
-<a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea7d4aa1ab4b10bb64593cb92d1e286e66">LFRB_NOSPACE</a> = -2, 
-<a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea8340fe9d92ae78e7938f4195f5461b25">LFRB_NODATA</a> = -3, 
-<br />
-&#160;&#160;<a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea608e5a07d37c349bee2193e6584da0b4">LFRB_INVALID_ARGUMENT</a>
-<br />
+<a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea8340fe9d92ae78e7938f4195f5461b25">LFRB_NODATA</a> = -2, 
+<a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea608e5a07d37c349bee2193e6584da0b4">LFRB_INVALID_ARGUMENT</a> = -3
  }</td></tr>
 <tr class="separator:acd1fe3b16fcc7d17d6e1ecb9ca49148e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -122,15 +118,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a7d80f245352758222a8e6871af47a392"><td class="memItemLeft" align="right" valign="top">LFRB_EXPORT enum <a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148e">lfrb_error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8h.html#a7d80f245352758222a8e6871af47a392">lfrb_init</a> (struct <a class="el" href="structlfrb.html">lfrb</a> *<a class="el" href="structlfrb.html">lfrb</a>, size_t size, uint8_t *mem)</td></tr>
 <tr class="memdesc:a7d80f245352758222a8e6871af47a392"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the lock free ringbuffer.  <a href="lfrb_8h.html#a7d80f245352758222a8e6871af47a392">More...</a><br /></td></tr>
 <tr class="separator:a7d80f245352758222a8e6871af47a392"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe3fd285252c05a26ccf097babac4068"><td class="memItemLeft" align="right" valign="top">LFRB_EXPORT enum <a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148e">lfrb_error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8h.html#afe3fd285252c05a26ccf097babac4068">lfrb_enqueue</a> (struct <a class="el" href="structlfrb.html">lfrb</a> *<a class="el" href="structlfrb.html">lfrb</a>, uint8_t value)</td></tr>
-<tr class="memdesc:afe3fd285252c05a26ccf097babac4068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues a byte into the ringbuffer.  <a href="lfrb_8h.html#afe3fd285252c05a26ccf097babac4068">More...</a><br /></td></tr>
-<tr class="separator:afe3fd285252c05a26ccf097babac4068"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50c1f9d5361a506dbe1b291a3b7310a0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8h.html#a50c1f9d5361a506dbe1b291a3b7310a0">lfrb_enqueue</a> (struct <a class="el" href="structlfrb.html">lfrb</a> *<a class="el" href="structlfrb.html">lfrb</a>, uint8_t value)</td></tr>
+<tr class="memdesc:a50c1f9d5361a506dbe1b291a3b7310a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues a byte into the ringbuffer.  <a href="lfrb_8h.html#a50c1f9d5361a506dbe1b291a3b7310a0">More...</a><br /></td></tr>
+<tr class="separator:a50c1f9d5361a506dbe1b291a3b7310a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1103c4cd22dc73f2cfba693004b32a14"><td class="memItemLeft" align="right" valign="top">LFRB_EXPORT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8h.html#a1103c4cd22dc73f2cfba693004b32a14">lfrb_enqueue_buffer</a> (struct <a class="el" href="structlfrb.html">lfrb</a> *<a class="el" href="structlfrb.html">lfrb</a>, uint8_t *buff, size_t count)</td></tr>
 <tr class="memdesc:a1103c4cd22dc73f2cfba693004b32a14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues multiple bytes into the ringbuffer.  <a href="lfrb_8h.html#a1103c4cd22dc73f2cfba693004b32a14">More...</a><br /></td></tr>
 <tr class="separator:a1103c4cd22dc73f2cfba693004b32a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a9d64b181fca916d19aa1b7001c9296"><td class="memItemLeft" align="right" valign="top">LFRB_EXPORT enum <a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148e">lfrb_error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8h.html#a9a9d64b181fca916d19aa1b7001c9296">lfrb_dequeue</a> (struct <a class="el" href="structlfrb.html">lfrb</a> *<a class="el" href="structlfrb.html">lfrb</a>, uint8_t *value)</td></tr>
-<tr class="memdesc:a9a9d64b181fca916d19aa1b7001c9296"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dequeues a byte from the ringbuffer.  <a href="lfrb_8h.html#a9a9d64b181fca916d19aa1b7001c9296">More...</a><br /></td></tr>
-<tr class="separator:a9a9d64b181fca916d19aa1b7001c9296"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a949e6f63bb4512610ac1e74cedd8c61a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8h.html#a949e6f63bb4512610ac1e74cedd8c61a">lfrb_dequeue</a> (struct <a class="el" href="structlfrb.html">lfrb</a> *<a class="el" href="structlfrb.html">lfrb</a>, uint8_t *value)</td></tr>
+<tr class="memdesc:a949e6f63bb4512610ac1e74cedd8c61a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dequeues a byte from the ringbuffer.  <a href="lfrb_8h.html#a949e6f63bb4512610ac1e74cedd8c61a">More...</a><br /></td></tr>
+<tr class="separator:a949e6f63bb4512610ac1e74cedd8c61a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afde8465bc51b9015e9a6c146064bbe4f"><td class="memItemLeft" align="right" valign="top">LFRB_EXPORT size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8h.html#afde8465bc51b9015e9a6c146064bbe4f">lfrb_dequeue_available</a> (const struct <a class="el" href="structlfrb.html">lfrb</a> *<a class="el" href="structlfrb.html">lfrb</a>)</td></tr>
 <tr class="memdesc:afde8465bc51b9015e9a6c146064bbe4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check how many elements can be read from the buffer.  <a href="lfrb_8h.html#afde8465bc51b9015e9a6c146064bbe4f">More...</a><br /></td></tr>
 <tr class="separator:afde8465bc51b9015e9a6c146064bbe4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,8 +166,6 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="acd1fe3b16fcc7d17d6e1ecb9ca49148eabebf71af493fc707ec546f835b10e6da"></a>LFRB_NOT_POWER_OF_2&#160;</td><td class="fielddoc"><p>The ringbuffer size is not power of 2. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="acd1fe3b16fcc7d17d6e1ecb9ca49148ea7d4aa1ab4b10bb64593cb92d1e286e66"></a>LFRB_NOSPACE&#160;</td><td class="fielddoc"><p>No space in ringbuffer to enqueue data. </p>
-</td></tr>
 <tr><td class="fieldname"><a id="acd1fe3b16fcc7d17d6e1ecb9ca49148ea8340fe9d92ae78e7938f4195f5461b25"></a>LFRB_NODATA&#160;</td><td class="fielddoc"><p>No data in ringbuffer to dequeue data. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="acd1fe3b16fcc7d17d6e1ecb9ca49148ea608e5a07d37c349bee2193e6584da0b4"></a>LFRB_INVALID_ARGUMENT&#160;</td><td class="fielddoc"><p>An argument is not correct. </p>
@@ -181,14 +175,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a9a9d64b181fca916d19aa1b7001c9296"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a9d64b181fca916d19aa1b7001c9296">&#9670;&nbsp;</a></span>lfrb_dequeue()</h2>
+<a id="a949e6f63bb4512610ac1e74cedd8c61a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a949e6f63bb4512610ac1e74cedd8c61a">&#9670;&nbsp;</a></span>lfrb_dequeue()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">LFRB_EXPORT enum <a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148e">lfrb_error</a> lfrb_dequeue </td>
+          <td class="memname">size_t lfrb_dequeue </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structlfrb.html">lfrb</a> *&#160;</td>
           <td class="paramname"><em>lfrb</em>, </td>
@@ -215,7 +209,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea633cf795fd4655dbf454d192d4d3b07e">LFRB_SUCCESS</a> on success, <a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea8340fe9d92ae78e7938f4195f5461b25">LFRB_NODATA</a> if the buffer is empty. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success </dd>
+<dd>
+0 if no data is available. </dd></dl>
 
 </div>
 </div>
@@ -272,14 +268,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afe3fd285252c05a26ccf097babac4068"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe3fd285252c05a26ccf097babac4068">&#9670;&nbsp;</a></span>lfrb_enqueue()</h2>
+<a id="a50c1f9d5361a506dbe1b291a3b7310a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50c1f9d5361a506dbe1b291a3b7310a0">&#9670;&nbsp;</a></span>lfrb_enqueue()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">LFRB_EXPORT enum <a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148e">lfrb_error</a> lfrb_enqueue </td>
+          <td class="memname">size_t lfrb_enqueue </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structlfrb.html">lfrb</a> *&#160;</td>
           <td class="paramname"><em>lfrb</em>, </td>
@@ -306,7 +302,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea633cf795fd4655dbf454d192d4d3b07e">LFRB_SUCCESS</a> on success, <a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148ea7d4aa1ab4b10bb64593cb92d1e286e66">LFRB_NOSPACE</a> if not enough space available. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success </dd>
+<dd>
+0 if not enough space available. </dd></dl>
 
 </div>
 </div>
