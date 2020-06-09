@@ -154,7 +154,7 @@ static void test_enqueue_block(void)
 	size_t written = lfrb_enqueue_buffer(&lfrb, block, sizeof(block));
 	TEST_ASSERT_EQUAL_MESSAGE(sizeof(block), written, "Not enough data written into empty ringbuffer!");
 
-	for (unsigned int i = 0; i < written; i++) {
+	for (unsigned int i = 0; i < sizeof(block); i++) {
 		uint8_t val;
 		size_t num = lfrb_dequeue(&lfrb, &val);
 		TEST_ASSERT_EQUAL_MESSAGE(num, 1, "Dequeueing failed!");
