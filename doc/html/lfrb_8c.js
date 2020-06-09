@@ -1,5 +1,6 @@
 var lfrb_8c =
 [
+    [ "MIN", "lfrb_8c.html#a3acffbd305ee72dcd4593c0d8af64a4f", null ],
     [ "lfrb_dequeue", "lfrb_8c.html#a17cb47a443dca7ca2c382c4c5c263854", null ],
     [ "lfrb_dequeue_available", "lfrb_8c.html#ab65268272ec46e1d83f65932a5c2144d", null ],
     [ "lfrb_dequeuer_clear", "lfrb_8c.html#a767f22407e2c34b1403be82523929afb", null ],

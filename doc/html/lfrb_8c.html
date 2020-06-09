@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('lfrb_8c.html',''); initResizable(); })
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -94,8 +95,14 @@ $(document).ready(function(){initNavTree('lfrb_8c.html',''); initResizable(); })
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="lfrb_8h_source.html">lfrb.h</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a3acffbd305ee72dcd4593c0d8af64a4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8c.html#a3acffbd305ee72dcd4593c0d8af64a4f">MIN</a>(a,  b)&#160;&#160;&#160;((a) &lt; (b) ? (a) : (b))</td></tr>
+<tr class="separator:a3acffbd305ee72dcd4593c0d8af64a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af73910afcd5eb2cf00574c94a25d090b"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="lfrb_8h.html#acd1fe3b16fcc7d17d6e1ecb9ca49148e">lfrb_error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8c.html#af73910afcd5eb2cf00574c94a25d090b">lfrb_init</a> (struct <a class="el" href="structlfrb.html">lfrb</a> *<a class="el" href="structlfrb.html">lfrb</a>, size_t size, uint8_t *mem)</td></tr>
@@ -139,6 +146,35 @@ Variables</h2></td></tr>
 <tr class="memitem:aaf7a8cd6e421c283b260ab54667eed8c"><td class="memItemLeft" align="right" valign="top">static memory_order&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lfrb_8c.html#aaf7a8cd6e421c283b260ab54667eed8c">index_release_barrier</a> = memory_order_relaxed</td></tr>
 <tr class="separator:aaf7a8cd6e421c283b260ab54667eed8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a3acffbd305ee72dcd4593c0d8af64a4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3acffbd305ee72dcd4593c0d8af64a4f">&#9670;&nbsp;</a></span>MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((a) &lt; (b) ? (a) : (b))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a17cb47a443dca7ca2c382c4c5c263854"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a17cb47a443dca7ca2c382c4c5c263854">&#9670;&nbsp;</a></span>lfrb_dequeue()</h2>
