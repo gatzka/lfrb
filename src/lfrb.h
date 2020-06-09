@@ -67,8 +67,8 @@ LFRB_EXPORT enum lfrb_error lfrb_init(struct lfrb *lfrb, size_t size, uint8_t *m
  * 
  * @param[in] lfrb The ringbuffer where the byte should be enqueued to.
  * @param value The value to be enqueued
- * @return 1 on success
- * @return 0 if not enough space available.
+ * @return @c 1 on success
+ * @return @c 0 if not enough space available.
  */
 size_t lfrb_enqueue(struct lfrb *lfrb, uint8_t value);
 
@@ -87,8 +87,8 @@ LFRB_EXPORT size_t lfrb_enqueue_buffer(struct lfrb *lfrb, uint8_t *buff, size_t 
  * 
  * @param[in] lfrb The ringbuffer where the byte should be dequeued from.
  * @param[out] value Pointer where the value should be stored to.
- * @return 1 on success
- * @return 0 if no data is available.
+ * @return @c 1 on success
+ * @return @c 0 if no data is available.
  */
 size_t lfrb_dequeue(struct lfrb *lfrb, uint8_t *value);
 
@@ -112,8 +112,8 @@ LFRB_EXPORT size_t lfrb_enqueue_available(const struct lfrb *lfrb);
  * @brief Check if the buffer is full.
  * 
  * @param[in] lfrb The buffer that should be asked.
- * @return true if the buffer is full.
- * @return false if the buffer is not full.
+ * @return @c true if the buffer is full.
+ * @return @c false if the buffer is not full.
  */
 LFRB_EXPORT bool lfrb_is_full(const struct lfrb *lfrb);
 
@@ -121,8 +121,8 @@ LFRB_EXPORT bool lfrb_is_full(const struct lfrb *lfrb);
  * @brief Check if the buffer is empty.
  * 
  * @param[in] lfrb The buffer that should be asked.
- * @return true if the buffer is empty.
- * @return false if the buffer is not empty.
+ * @return @c true if the buffer is empty.
+ * @return @c false if the buffer is not empty.
  */
 LFRB_EXPORT bool lfrb_is_empty(const struct lfrb *lfrb);
 
