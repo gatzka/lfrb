@@ -6,7 +6,7 @@ var lfrb_8c =
     [ "lfrb_dequeuer_clear", "lfrb_8c.html#a767f22407e2c34b1403be82523929afb", null ],
     [ "lfrb_enqueue", "lfrb_8c.html#a50c1f9d5361a506dbe1b291a3b7310a0", null ],
     [ "lfrb_enqueue_available", "lfrb_8c.html#ae9a2442d73a41303bd4b079bac489171", null ],
-    [ "lfrb_enqueue_buffer", "lfrb_8c.html#adb2e79b9cd6adb90f3721a4f72b3a929", null ],
+    [ "lfrb_enqueue_buffer", "lfrb_8c.html#aa7029b75f421b9721d1560421726fce1", null ],
     [ "lfrb_enqueuer_clear", "lfrb_8c.html#a805f4d54c7eb984e11d66250fb15c604", null ],
     [ "lfrb_init", "lfrb_8c.html#af73910afcd5eb2cf00574c94a25d090b", null ],
     [ "lfrb_is_empty", "lfrb_8c.html#aa0dd06a847bba1dd16b8e95f27c100f8", null ],
