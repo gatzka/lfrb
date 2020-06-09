@@ -76,7 +76,7 @@ size_t lfrb_enqueue(struct lfrb *lfrb, uint8_t value)
 	return 1;
 }
 
-size_t lfrb_enqueue_buffer(struct lfrb *lfrb, uint8_t *buff, size_t count)
+size_t lfrb_enqueue_buffer(struct lfrb *lfrb, const uint8_t *buff, size_t count)
 {
 	size_t tmp_write_index = atomic_load_explicit(&lfrb->write_index, memory_order_relaxed);
 	size_t to_write = count;

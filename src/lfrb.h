@@ -80,7 +80,7 @@ size_t lfrb_enqueue(struct lfrb *lfrb, uint8_t value);
  * @param count Number of elements to write from the given buffer
  * @return The number of bytes actually enqueued. Could be zero!
  */
-LFRB_EXPORT size_t lfrb_enqueue_buffer(struct lfrb *lfrb, uint8_t *buff, size_t count);
+LFRB_EXPORT size_t lfrb_enqueue_buffer(struct lfrb *lfrb, const uint8_t *buff, size_t count);
 
 /**
  * @brief Dequeues a byte from the ringbuffer.
