@@ -62,18 +62,18 @@ enum lfrb_error lfrb_init(struct lfrb *lfrb, size_t size, uint8_t *mem)
 	return LFRB_SUCCESS;
 }
 
-enum lfrb_error lfrb_enqueue(struct lfrb *lfrb, uint8_t value)
+size_t lfrb_enqueue(struct lfrb *lfrb, uint8_t value)
 {
 	size_t tmp_write_index = atomic_load_explicit(&lfrb->write_index, memory_order_relaxed);
 	if ((tmp_write_index - atomic_load_explicit(&lfrb->read_index, index_acquire_barrier)) == lfrb_size(lfrb)) {
-		return LFRB_NOSPACE;
+		return 0;
 	} else {
 		lfrb->mem[tmp_write_index++ & lfrb->mask] = value;
 		atomic_signal_fence(memory_order_release);
 		atomic_store_explicit(&lfrb->write_index, tmp_write_index, index_release_barrier);
 	}
 
-	return LFRB_SUCCESS;
+	return 1;
 }
 
 size_t lfrb_enqueue_buffer(struct lfrb *lfrb, uint8_t *buff, size_t count)
@@ -101,18 +101,18 @@ size_t lfrb_enqueue_buffer(struct lfrb *lfrb, uint8_t *buff, size_t count)
 	return to_write;
 }
 
-enum lfrb_error lfrb_dequeue(struct lfrb *lfrb, uint8_t *value)
+size_t lfrb_dequeue(struct lfrb *lfrb, uint8_t *value)
 {
 	size_t tmp_read_index = atomic_load_explicit(&lfrb->read_index, memory_order_relaxed);
 
 	if (tmp_read_index == atomic_load_explicit(&lfrb->write_index, memory_order_relaxed)) {
-		return LFRB_NODATA;
+		return 0;
 	} else {
 		*value = lfrb->mem[tmp_read_index & lfrb->mask];
 		atomic_store_explicit(&lfrb->read_index, ++tmp_read_index, index_release_barrier);
 	}
 
-	return LFRB_SUCCESS;
+	return 1;
 }
 
 size_t lfrb_dequeue_available(const struct lfrb *lfrb)

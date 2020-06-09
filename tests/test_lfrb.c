@@ -68,12 +68,12 @@ static void test_enqueue(void)
 	TEST_ASSERT_TRUE_MESSAGE(lfrb_is_empty(&lfrb), "ringbuffer is not empty after initialization");
 
 	for (unsigned int i = 0; i < sizeof(buffer); i++) {
-		err = lfrb_enqueue(&lfrb, 'a');
-		TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Enqueueing upto size of buffer failed!");
+		size_t num= lfrb_enqueue(&lfrb, 'a');
+		TEST_ASSERT_EQUAL_MESSAGE(1, num, "Enqueueing upto size of buffer failed!");
 	}
 
-	err = lfrb_enqueue(&lfrb, 'a');
-	TEST_ASSERT_EQUAL_MESSAGE(LFRB_NOSPACE, err, "Enqueueing more than size of buffer did not failed!");
+	size_t num = lfrb_enqueue(&lfrb, 'a');
+	TEST_ASSERT_EQUAL_MESSAGE(0, num, "Enqueueing more than size of buffer did not failed!");
 
 	TEST_ASSERT_TRUE_MESSAGE(lfrb_is_full(&lfrb), "Buffer is not full after writing enough bytes!");
 }
@@ -86,14 +86,14 @@ static void test_enqueue_dequeue(void)
 	enum lfrb_error err = lfrb_init(&lfrb, sizeof(buffer), buffer);
 	TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Initialization of rightly sized buffer failed!");
 	TEST_ASSERT_TRUE_MESSAGE(lfrb_is_empty(&lfrb), "ringbuffer is not empty after initialization");
-	err = lfrb_dequeue(&lfrb, &val);
-	TEST_ASSERT_EQUAL_MESSAGE(LFRB_NODATA, err, "Dequeueing from emtpy buffer did not fail!");
+	size_t num = lfrb_dequeue(&lfrb, &val);
+	TEST_ASSERT_EQUAL_MESSAGE(0, num, "Dequeueing from emtpy buffer did not fail!");
 
 	for (unsigned int i = 0; i < 3 * sizeof(buffer); i++) {
-		err = lfrb_enqueue(&lfrb, (uint8_t)i);
-		TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Enqueueing into buffer failed!");
-		err = lfrb_dequeue(&lfrb, &val);
-		TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Dequeueing from buffer failed!");
+		num = lfrb_enqueue(&lfrb, (uint8_t)i);
+		TEST_ASSERT_EQUAL_MESSAGE(1, num, "Enqueueing into buffer failed!");
+		num = lfrb_dequeue(&lfrb, &val);
+		TEST_ASSERT_EQUAL_MESSAGE(1, num, "Dequeueing from buffer failed!");
 
 		TEST_ASSERT_EQUAL_MESSAGE((uint8_t)i, val, "Dequeued value not correct!");
 	}
@@ -107,8 +107,8 @@ static void test_dequeuer_clear(void)
 	TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Initialization of rightly sized buffer failed!");
 
 	for (unsigned int i = 0; i < sizeof(buffer); i++) {
-		err = lfrb_enqueue(&lfrb, 'a');
-		TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Enqueueing upto size of buffer failed!");
+		size_t num = lfrb_enqueue(&lfrb, 'a');
+		TEST_ASSERT_EQUAL_MESSAGE(1, num, "Enqueueing upto size of buffer failed!");
 	}
 
 	TEST_ASSERT_EQUAL_MESSAGE(sizeof(buffer), lfrb_dequeue_available(&lfrb), "Not enough data available in full ringbuffer!");
@@ -129,8 +129,8 @@ static void test_enqueuer_clear(void)
 	TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Initialization of rightly sized buffer failed!");
 
 	for (unsigned int i = 0; i < sizeof(buffer); i++) {
-		err = lfrb_enqueue(&lfrb, 'a');
-		TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Enqueueing upto size of buffer failed!");
+		size_t num = lfrb_enqueue(&lfrb, 'a');
+		TEST_ASSERT_EQUAL_MESSAGE(1, num, "Enqueueing upto size of buffer failed!");
 	}
 
 	TEST_ASSERT_EQUAL_MESSAGE(sizeof(buffer), lfrb_dequeue_available(&lfrb), "Not enough data available in full ringbuffer!");
@@ -156,8 +156,8 @@ static void test_enqueue_block(void)
 
 	for (unsigned int i = 0; i < written; i++) {
 		uint8_t val;
-		err = lfrb_dequeue(&lfrb, &val);
-		TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Dequeueing failed!");
+		size_t num = lfrb_dequeue(&lfrb, &val);
+		TEST_ASSERT_EQUAL_MESSAGE(num, 1, "Dequeueing failed!");
 		TEST_ASSERT_EQUAL_MESSAGE(block[i], val, "dequeuing values from block enqueue do not match!");
 	}
 }
@@ -175,8 +175,8 @@ static void test_enqueue_big_block(void)
 
 	for (unsigned int i = 0; i < written; i++) {
 		uint8_t val;
-		err = lfrb_dequeue(&lfrb, &val);
-		TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Dequeueing failed!");
+		size_t num = lfrb_dequeue(&lfrb, &val);
+		TEST_ASSERT_EQUAL_MESSAGE(1, num, "Dequeueing failed!");
 		TEST_ASSERT_EQUAL_MESSAGE(block[i], val, "dequeuing values from block enqueue do not match!");
 	}
 }
@@ -199,8 +199,8 @@ static void test_enqueue_big_block_with_wrap_around(void)
 		TEST_ASSERT_EQUAL_MESSAGE(lfrb_size(&lfrb), written, "Not enough or too much data written into empty ringbuffer!");
 
 		for (unsigned int j = 0; j < written; j++) {
-			err = lfrb_dequeue(&lfrb, &val);
-			TEST_ASSERT_EQUAL_MESSAGE(LFRB_SUCCESS, err, "Dequeueing failed!");
+			size_t num = lfrb_dequeue(&lfrb, &val);
+			TEST_ASSERT_EQUAL_MESSAGE(1, num, "Dequeueing failed!");
 			TEST_ASSERT_EQUAL_MESSAGE(block[j], val, "dequeuing values from block enqueue do not match!");
 		}
 	}

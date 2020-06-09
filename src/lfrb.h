@@ -41,11 +41,10 @@ extern "C" {
 #endif
 
 enum lfrb_error {
-	LFRB_SUCCESS = 0,         /*!< No error occured. */
-	LFRB_NOT_POWER_OF_2 = -1, /*!< The ringbuffer size is not power of 2. */
-	LFRB_NOSPACE = -2,        /*!< No space in ringbuffer to enqueue data. */
-	LFRB_NODATA = -3,         /*!< No data in ringbuffer to dequeue data. */
-	LFRB_INVALID_ARGUMENT,    /*!< An argument is not correct. */
+	LFRB_SUCCESS = 0,           /*!< No error occured. */
+	LFRB_NOT_POWER_OF_2 = -1,   /*!< The ringbuffer size is not power of 2. */
+	LFRB_NODATA = -2,           /*!< No data in ringbuffer to dequeue data. */
+	LFRB_INVALID_ARGUMENT = -3, /*!< An argument is not correct. */
 };
 
 struct lfrb {
@@ -69,9 +68,10 @@ LFRB_EXPORT enum lfrb_error lfrb_init(struct lfrb *lfrb, size_t size, uint8_t *m
  * 
  * @param[in] lfrb The ringbuffer where the byte should be enqueued to.
  * @param value The value to be enqueued
- * @return ::LFRB_SUCCESS on success, ::LFRB_NOSPACE if not enough space available.
+ * @return 1 on success
+ * @return 0 if not enough space available.
  */
-LFRB_EXPORT enum lfrb_error lfrb_enqueue(struct lfrb *lfrb, uint8_t value);
+size_t lfrb_enqueue(struct lfrb *lfrb, uint8_t value);
 
 /**
  * @brief Enqueues multiple bytes into the ringbuffer.
@@ -88,9 +88,10 @@ LFRB_EXPORT size_t lfrb_enqueue_buffer(struct lfrb *lfrb, uint8_t *buff, size_t 
  * 
  * @param[in] lfrb The ringbuffer where the byte should be dequeued from.
  * @param[out] value Pointer where the value should be stored to.
- * @return ::LFRB_SUCCESS on success, ::LFRB_NODATA if the buffer is empty.
+ * @return 1 on success
+ * @return 0 if no data is available.
  */
-LFRB_EXPORT enum lfrb_error lfrb_dequeue(struct lfrb *lfrb, uint8_t *value);
+size_t lfrb_dequeue(struct lfrb *lfrb, uint8_t *value);
 
 /**
  * @brief Check how many elements can be read from the buffer.
