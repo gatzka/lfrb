@@ -12,13 +12,13 @@ jobs:
         run: sudo apt-get install ninja-build
 
       - name: Configure
-        run:  mkdir build && cd build && cmake -G Ninja -DCMAKE_TOOLCHAIN_FILE=toolchains/x86-linux-gcc-9.cmake -DCMAKE_BUILD_TYPE=Coverage ..
+        run:  cmake -G Ninja -DCMAKE_TOOLCHAIN_FILE=toolchains/x86-linux-gcc-9.cmake -DCMAKE_BUILD_TYPE=Coverage ..
 
       - name: build
-        run: cd build && ninja
+        run:  ninja
 
       - name: Test
-        run: cd build && ctest --output-on-failure
+        run: ctest --output-on-failure
 
       - name: Upload report
         uses: codecov/codecov-action@v1
